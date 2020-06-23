@@ -150,7 +150,7 @@ class MeshIntegrator {
       count++;
     }
 
-    ROS_INFO_STREAM("Block updated count:" << count << std::endl);
+    ROS_INFO_STREAM("Block updated count:" << to_string(count) << std::endl);
 
     std::unique_ptr<ThreadSafeIndex> index_getter(
         new MixedThreadSafeIndex(all_tsdf_blocks.size()));
