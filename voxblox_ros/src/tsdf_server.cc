@@ -491,8 +491,11 @@ void TsdfServer::publishPointclouds() {
 }
 
 void TsdfServer::updateMesh() {
+
   if (verbose_) {
-    ROS_INFO("Updating mesh.");
+    //print the number of updated blocks
+    size_t blockCount = mesh_integrator_->getUpdatedBlockCount();
+    ROS_INFO("Updating mesh. Blockcount:" << std::to_string(blockCount) << std::endl);
   }
 
   timing::Timer generate_mesh_timer("mesh/update");
@@ -520,10 +523,6 @@ void TsdfServer::updateMesh() {
 }
 
 bool TsdfServer::generateMesh() {
-
-  //print the number of updated blocks
-  size_t blockCount = mesh_integrator_->getUpdatedBlockCount();
-  ROS_INFO("Block updated count:" << std::to_string(blockCount) << std::endl);
 
   timing::Timer generate_mesh_timer("mesh/generate");
   const bool clear_mesh = true;
