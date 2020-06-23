@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 2.8.3)
 project(voxblox_ros)
 
 find_package(catkin_simple REQUIRED)
+find_package(PCL 1.8 REQUIRED )
 catkin_simple(ALL_DEPS_REQUIRED)
 
-add_definitions(-std=c++11 -Wall -Wextra)
+add_definitions(-std=c++14 -Wall -Wextra)
 
 #############
 # LIBRARIES #
