@@ -143,9 +143,14 @@ class MeshIntegrator {
     }
 
     // Allocate all the mesh memory
+    //mm: added counter
+    size_t count = 0;
     for (const BlockIndex& block_index : all_tsdf_blocks) {
       mesh_layer_->allocateMeshPtrByIndex(block_index);
+      count++;
     }
+
+    ROS_INFO_STREAM("Block updated count:" << count << std::endl);
 
     std::unique_ptr<ThreadSafeIndex> index_getter(
         new MixedThreadSafeIndex(all_tsdf_blocks.size()));

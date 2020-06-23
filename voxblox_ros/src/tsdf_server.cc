@@ -409,7 +409,7 @@ void TsdfServer::integratePointcloud(const Transformation& T_G_C,
                                      const Colors& colors,
                                      const bool is_freespace_pointcloud) {
   CHECK_EQ(ptcloud_C.size(), colors.size());
-  tsdf_integrator_->integratePointCloud(T_G_C, ptcloud_C, colors,
+  tsdf_integrator_->(T_G_C, ptcloud_C, colors,
                                         is_freespace_pointcloud);
 }
 
