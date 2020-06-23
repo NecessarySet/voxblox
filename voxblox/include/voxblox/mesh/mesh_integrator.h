@@ -143,14 +143,10 @@ class MeshIntegrator {
     }
 
     // Allocate all the mesh memory
-    //mm: added counter
-    size_t count = 0;
+
     for (const BlockIndex& block_index : all_tsdf_blocks) {
       mesh_layer_->allocateMeshPtrByIndex(block_index);
-      count++;
     }
-
-    ROS_INFO_STREAM("Block updated count:" << std::to_string(count) << std::endl);
 
     std::unique_ptr<ThreadSafeIndex> index_getter(
         new MixedThreadSafeIndex(all_tsdf_blocks.size()));
@@ -384,6 +380,21 @@ class MeshIntegrator {
         utils::getColorIfValid(voxel, config_.min_weight, &(mesh->colors[i]));
       }
     }
+  }
+
+  //mm: return the nubmer of updated blocks in the esh
+  size_t getUpdatedBlockCount() {
+  
+    BlockIndexList all_tsdf_blocks;
+    sdf_layer_const_->getAllUpdatedBlocks(Update::kMesh, &all_tsdf_blocks);
+
+    size_t count = 0;
+    for (const BlockIndex& block_index : all_tsdf_blocks) {
+      count++;
+    }
+
+    return count;
+    
   }
 
  protected:
