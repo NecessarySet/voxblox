@@ -495,7 +495,7 @@ void TsdfServer::updateMesh() {
   if (verbose_) {
     //print the number of updated blocks
     size_t blockCount = mesh_integrator_->getUpdatedBlockCount();
-    ROS_INFO("Updating mesh. Blockcount:" << std::to_string(blockCount) << std::endl);
+    ROS_INFO("Updating mesh with %d blocks.", blockCount);
   }
 
   timing::Timer generate_mesh_timer("mesh/update");
