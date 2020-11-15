@@ -201,7 +201,7 @@ class MeshLayer {
 
     size_t new_index = 0u;
     for (const BlockIndex& block_index : mesh_indices) {
-      Mesh::ConstPtr mesh = getMeshPtrByIndex(block_index);
+      Mesh::ConstPtr mesh = PtrByIndex(block_index);
 
       // Check assumption that all meshes have same configuration regarding
       // colors, normals and indices.
